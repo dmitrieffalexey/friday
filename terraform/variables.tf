@@ -94,25 +94,9 @@ variable "s3_versioning_mfa_delete" {
   type    = bool
   default = false
 }
-variable "s3_lifecycle_rule_id" {
-  type    = string
-  default = "data"
-}
-variable "s3_lifecycle_rule_days_0" {
-  type    = number
-  default = 30
-}
-variable "s3_lifecycle_rule_storage_class_0" {
-  type    = string
-  default = "ONEZONE_IA"
-}
-variable "s3_lifecycle_rule_days_1" {
-  type    = number
-  default = 60
-}
-variable "s3_lifecycle_rule_storage_class_1" {
-  type    = string
-  default = "GLACIER"
+variable "s3_lifecycle_rules" {
+  type    = list(Object)
+  default = []
 }
 
 // KMS

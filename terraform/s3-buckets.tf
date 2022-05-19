@@ -45,20 +45,5 @@ module "crazy_berlin_weather_s3" {
     }
   }
 // Life Cycle rules
-  lifecycle_rule = [
-    {
-      id      = var.s3_lifecycle_rule_id
-      enabled = true
-
-      transition = [
-        {
-          days          = var.s3_lifecycle_rule_days_0
-          storage_class = var.s3_lifecycle_rule_storage_class_0
-        }, {
-          days          = var.s3_lifecycle_rule_days_1
-          storage_class = var.s3_lifecycle_rule_storage_class_1
-        }
-      ]
-    },
-  ]
+  lifecycle_rule = [element(var.s3_lifecycle_rules,count.index)]
 }
