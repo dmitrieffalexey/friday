@@ -7,7 +7,7 @@ So please do not forget to include them.
 
 ```terraform plan -var-file="values.tfvars"```
 
-Unfortunately I do now have an access to AWS cloud this is why `main.tf` has the following block:
+Unfortunately I do not have an access to AWS cloud this is why `main.tf` has the following block:
 ```  
   skip_credentials_validation = true
   skip_requesting_account_id  = true
