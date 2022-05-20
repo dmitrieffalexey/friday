@@ -22,7 +22,7 @@ Unfortunately I do not have an access to AWS cloud this is why `main.tf` has the
 ```
 Please feel free to remove it.
 
-### Possible Improvement (ToDo)
+### Possible Improvements (ToDo)
 In real live the `aws-kms-key` module should be moved to an other repository.
 
 I have just found that I can split bucket name to `bucket_name_prefix` and `bucket_name_suffix`
