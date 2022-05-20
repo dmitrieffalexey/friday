@@ -1,0 +1,11 @@
+replicaCount: 5
+
+image:
+  repository: oleksiydm/my-images
+  tag: latest
+  pullPolicy: Always
+
+helloworld:
+  port: 8080
+  javaOpts: ""
+

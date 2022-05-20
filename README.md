@@ -19,3 +19,5 @@ Unfortunately I do now have an access to AWS cloud this is why `main.tf` has the
 Please be free to remove it.
 
 ### Problem Statement 2
+The provided Helm chart deploys a HelloWord application from my Docker Hub repository.
+This chart also creates a Kubernetes service (NodePort) and an Ingress controller (Nginx).

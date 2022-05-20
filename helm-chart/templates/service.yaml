@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: {{ .Chart.Name }}
+  name: {{ .Chart.Name }}
+spec:
+  type: NodePort
+  ports:
+    - port: {{ .Values.helloworld.port }}
+      targetPort: {{ .Values.helloworld.port }}
+      protocol: TCP
+      name: http
+  selector:
+    app: {{ .Chart.Name }}

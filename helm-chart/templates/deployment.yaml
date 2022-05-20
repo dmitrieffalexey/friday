@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Chart.Name }}
+  labels:
+    app: {{ .Chart.Name }}
+    version: "{{ .Values.image.tag }}"
+spec:
+  replicas: {{ .Values.replicaCount }}
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: {{ .Chart.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Chart.Name }}
+        version: "{{ .Values.image.tag }}"
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.helloworld.port }}
+          env:
+            - name: JAVA_OPTS
+              value: {{ default "" .Values.helloworld.javaOpts | quote }}
+          readinessProbe:
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            httpGet:
+              path: /actuator/health
+              port: {{ .Values.helloworld.port }}
+          livenessProbe:
+            initialDelaySeconds: 600
+            periodSeconds: 60
+            httpGet:
+               path: /actuator/health
+               port: {{ .Values.helloworld.port }}
