@@ -1,4 +1,5 @@
 # Friday's challenge
+### Problem Statement 1
 This solution uses the latest version of official AWS module "s3-bucket" (https://registry.terraform.io/modules/terraform-aws-modules/s3-bucket/aws/latest)
 
 Some values are located in `values.tvvars` file. 
@@ -16,3 +17,5 @@ Unfortunately I do now have an access to AWS cloud this is why `main.tf` has the
   secret_key                  = "my_secret_key"
 ```
 Please be free to remove it.
+
+### Problem Statement 2
