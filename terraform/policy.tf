@@ -12,7 +12,7 @@ data "aws_iam_policy_document" "bucket_policy" {
     ]
 
     resources = [
-      "arn:aws:s3:::${element(var.bucket_names,count.index)}",
+      "arn:aws:s3:::${var.bucket_names[count.index]}",
     ]
   }
 }

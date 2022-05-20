@@ -4,7 +4,7 @@ module "crazy_berlin_weather_s3" {
   version = "3.2.0"
 
   count               = length(var.bucket_names)
-  bucket              = element(var.bucket_names,count.index)
+  bucket              = var.bucket_names[count.index]
   force_destroy       = var.s3_force_destroy
   acceleration_status = var.s3_acceleration_status
   request_payer       = var.s3_request_payer
@@ -13,7 +13,7 @@ module "crazy_berlin_weather_s3" {
 
 // Bucket policies
   attach_policy                         = var.s3_attach_policy
-  policy                                = element(data.aws_iam_policy_document.bucket_policy.json, count.index)
+  policy                                = data.aws_iam_policy_document.bucket_policy[count.index].json
   attach_deny_insecure_transport_policy = var.s3_attach_deny_insecure_transport_policy
   attach_require_latest_tls_policy      = var.s3_attach_require_latest_tls_policy
 
@@ -45,5 +45,5 @@ module "crazy_berlin_weather_s3" {
     }
   }
 // Life Cycle rules
-  lifecycle_rule = [element(var.s3_lifecycle_rules,count.index)]
+  lifecycle_rule = var.s3_lifecycle_rules[count.index]
 }
