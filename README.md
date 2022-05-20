@@ -20,9 +20,11 @@ Unfortunately I do not have an access to AWS cloud this is why `main.tf` has the
   access_key                  = "my_access_key"
   secret_key                  = "my_secret_key"
 ```
-Please be free to remove it.
+Please feel free to remove it.
 
 ### Possible Improvement (ToDo)
+In real live the `aws-kms-key` module should be moved to an other repository.
+
 I have just found that I can split bucket name to `bucket_name_prefix` and `bucket_name_suffix`
 Set `bucket_name_prefix = "crazy-berlin-weather-"` and  `bucket_name_suffix` as a list of suffixes `bucket_name_suffix = ["hourly", "daily", "weekly"]`.
 The list of lifecycle policies should be changed to `map of objects` where indexes are `bucket_name_suffix`.
@@ -33,7 +35,7 @@ The provided Helm chart deploys a HelloWorld application from my Docker Hub repo
 This chart also creates a Kubernetes service (NodePort) and an Ingress controller (Nginx).
 
 The high availability and fault tolerant are managed by the following parameters:
-- Replica count is more than 2 
+- Replica count is more than 1 
 - Deployment strategy is `RollingUpdate`
 - `RollingUpdate` parameters such as `maxUnavailable` and `maxSurge`
 
